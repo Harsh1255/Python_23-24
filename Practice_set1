@@ -1,0 +1,97 @@
+Reversing a String
+  Write a Python function to reverse a given string.
+  The string is “I am learning Python”
+  Create a function for reversing the string 
+  The name of the function should be “reverse_string”
+
+sol.-
+def reverse_string(str):
+    return str[::-1]
+
+str="i am learning python"
+reverse= reverse_string(str)
+print(reverse)
+--------------------------------------------------
+
+ Finding Prime Numbers
+ Write a Python function to generate a list of prime numbers up to a given number n.
+ Create a function named generate_prime which will take an input of numbers 
+ Find prime no till 20  
+
+sol.-
+def generate_prime(n):
+    primes = []
+    for num in range(2, n + 1):
+        is_prime = True
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(num)
+    return primes
+
+
+result = generate_prime(20)
+print(result)
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+ Calculating Factorial 
+ Write a Python function to calculate the factorial of a given non-negative integer.
+  If someone tries to find the factorial of 0 & 1 it should return 1 to the user,
+ The function name should be “factorial” taking an input parameter “n”
+*
+
+sol.-
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+
+result = factorial(5)
+print(result)
+--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+  Counting Words in a Sentence 
+ Write a Python function to count the number of words in a given sentence.
+  It should count the words in a sentence  The function name is count_words taking
+
+sol.-
+def count_words(sentence):
+    words = sentence.split()
+    return len(words)
+
+
+input_sentence = "This is himanshu and this code is for counting the sentences."
+word_count = count_words(input_sentence)
+print("Number of words:", word_count)
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+ Finding Maximum Element 
+ Write a Python function to find the maximum element in a list. 
+ List of no is [ 10 , 5 , 20 , 3, 2, 8, 20 , 2] 
+ If the list is empty it should return None 
+ Create function with name find_max_element
+*
+
+sol.-
+def find_max_element(lst):
+    if not lst: 
+        return None
+    else:
+        max_element = lst[0]
+        for element in lst:
+            if element > max_element:
+                max_element = element
+        return max_element
+
+numbers = [10, 5, 20, 3, 2, 8, 20, 2]
+max_num = find_max_element(numbers)
+print("Maximum Element:", max_num)
+
+
