@@ -1,0 +1,261 @@
+Calculator App 
+Create a Python program that acts as a simple calculator. It should take two numbers and an operator as input and perform the corresponding operation.
+
+sol.-
+def calculator():
+    try:
+        # Take user input for two numbers and an operator
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+        operator = input("Enter the operator (+, -, *, /): ")
+
+        # Perform the calculation based on the operator
+        if operator == '+':
+            result = num1 + num2
+        elif operator == '-':
+            result = num1 - num2
+        elif operator == '*':
+            result = num1 * num2
+        elif operator == '/':
+            if num2 != 0:  # Check for division by zero
+                result = num1 / num2
+            else:
+                print("Error: Division by zero is not allowed.")
+                return
+        else:
+            print("Error: Invalid operator.")
+            return
+
+        # Display the result
+        print("Result:", result)
+
+    except ValueError:
+        print("Error: Please enter valid numeric values for the numbers.")
+
+# Run the calculator
+calculator()
+--------------------------------------------------------------------------------------------------------------
+
+File Manipulation 
+Write a Python script to read a text file, count the occurrences of each word, and display the result.  
+*
+
+sol.-
+def count_word_occurrences(file_path):
+    try:
+        # Open the file in read mode
+        with open(file_path, 'r') as file:
+            # Read the content of the file
+            content = file.read()
+
+            # Split the content into words
+            words = content.split()
+
+            # Count occurrences of each word
+            word_count = {}
+            for word in words:
+                word = word.lower()  # Convert to lowercase to treat words case-insensitively
+                word_count[word] = word_count.get(word, 0) + 1
+
+            # Display the result
+            print("Word Occurrences:")
+            for word, count in word_count.items():
+                print(f"{word}: {count}")
+
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Specify the path to your text file
+file_path = 'path of file'
+
+# Call the function with the specified file path
+count_word_occurrences(file_path)
+--------------------------------------------------------------------------------------------------------------
+
+String Formatting Write a Python function that takes a sentence as input and returns the number of words in it.  
+
+sol.-
+def count_words_in_sentence(sentence):
+    words = sentence.split()
+    return len(words)
+
+input_sentence = "This is a Python function that takes a sentence as input and returns the number of words in it."
+word_count = count_words_in_sentence(input_sentence)
+print("Number of words:", word_count)
+--------------------------------------------------------------------------------------------------------------
+
+User Authentication 
+Develop a Python program that simulates user authentication. Ask the user to enter a username and password, and validate them against predefined values. 
+
+sol.-
+def authenticate_user():
+    # Predefined username and password
+    correct_username = "Himanshu123"
+    correct_password = "Harsh123"
+
+    # Ask the user to enter a username and password
+    entered_username = input("Enter your username: ")
+    entered_password = input("Enter your password: ")
+
+    # Validate the entered username and password
+    if entered_username == correct_username and entered_password == correct_password:
+        print("Authentication successful. Welcome,", entered_username + "!")
+    else:
+        print("Authentication failed. Invalid username or password.")
+
+# Run the user authentication program
+authenticate_user()
+--------------------------------------------------------------------------------------------------------------
+
+ Date Difference
+ #Write a Python function that calculates the difference in days between two given dates  
+
+sol.-
+from datetime import datetime
+
+def date_difference(date_str1, date_str2):
+    try:
+        # Convert date strings to datetime objects
+        date1 = datetime.strptime(date_str1, "%Y-%m-%d")
+        date2 = datetime.strptime(date_str2, "%Y-%m-%d")
+
+        # Calculate the difference in days
+        difference = abs((date2 - date1).days)
+        return difference
+
+    except ValueError:
+        print("Error: Please enter dates in the format 'YYYY-MM-DD'.")
+
+# Example: Calculate the difference in days between two dates
+date1_str = "2023-01-01"
+date2_str = "2024-01-01"
+result = date_difference(date1_str, date2_str)
+print(f"Difference in days between {date1_str} and {date2_str}: {result} days")
+--------------------------------------------------------------------------------------------------------------
+
+Reverse String Write a Python function that takes a sentence as input and returns the sentence with reversed words.  
+*
+
+sol.-
+def reverse_words_in_sentence(sentence):
+    words = sentence.split()
+    reversed_words = ' '.join(reversed(words))
+    return reversed_words
+
+# Example: Reverse words in a sentence
+input_sentence = "Write a Python function that takes a sentence as input and returns the sentence with reversed words."
+reversed_sentence = reverse_words_in_sentence(input_sentence)
+print("Original Sentence:", input_sentence)
+print("Reversed Sentence:", reversed_sentence)
+--------------------------------------------------------------------------------------------------------------
+
+ Random Password Generator 
+Write a Python function that generates a random password of a specified length, combining letters, numbers, and symbols.  
+*
+sol.-
+import string
+import secrets
+
+def generate_random_password(length=12):
+    # Define character sets for letters, digits, and symbols
+    letters = string.ascii_letters
+    digits = string.digits
+    symbols = string.punctuation
+
+    # Combine character sets
+    all_characters = letters + digits + symbols
+
+    # Use secrets.choice to generate a secure random password
+    password = ''.join(secrets.choice(all_characters) for _ in range(length))
+
+    return password
+
+# Example: Generate a random password of length 16
+random_password = generate_random_password(16)
+print("Random Password:", random_password)
+--------------------------------------------------------------------------------------------------------------
+
+ Email Validator 
+Develop a Python function that validates whether a given string is a valid email address or not.  
+
+sol.-
+import re
+
+def is_valid_email(email):
+    # Define a basic pattern for email validation
+    pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+
+    # Use re.match to check if the email matches the pattern
+    match = re.match(pattern, email)
+
+    # Return True if the email is valid, False otherwise
+    return bool(match)
+
+# Example: Validate an email address
+email_address = "harsh@example.com"
+result = is_valid_email(email_address)
+print(f"Is {email_address} a valid email address? {result}")
+--------------------------------------------------------------------------------------------------------------
+
+ Temperature Converter 
+Write a Python program that converts temperatures between Celsius and Fahrenheit based on user input  
+
+sol.-
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def temperature_converter():
+    print("Temperature Converter")
+    print("1. Celsius to Fahrenheit")
+    print("2. Fahrenheit to Celsius")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    if choice == '1':
+        celsius = float(input("Enter temperature in Celsius: "))
+        result = celsius_to_fahrenheit(celsius)
+        print(f"{celsius} Celsius is equal to {result:.2f} Fahrenheit.")
+    elif choice == '2':
+        fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+        result = fahrenheit_to_celsius(fahrenheit)
+        print(f"{fahrenheit} Fahrenheit is equal to {result:.2f} Celsius.")
+    else:
+        print("Invalid choice. Please enter either 1 or 2.")
+
+# Run the temperature converter program
+temperature_converter()
+--------------------------------------------------------------------------------------------------------------
+
+ Social Media Post Analyzer 
+Create a Python script that analyzes a given social media post. It could count the number of words, find hashtags, or determine the sentiment  
+
+sol.-
+from textblob import TextBlob
+
+def analyze_social_media_post(post):
+    # Count the number of words
+    words = post.split()
+    word_count = len(words)
+
+    # Find hashtags
+    hashtags = [word[1:] for word in words if word.startswith('#')]
+
+    # Determine sentiment using TextBlob
+    blob = TextBlob(post)
+    sentiment_polarity = blob.sentiment.polarity
+
+    # Display the analysis results
+    print("Analysis Results:")
+    print(f"Number of Words: {word_count}")
+    print("Hashtags:", hashtags)
+    print(f"Sentiment Polarity: {sentiment_polarity:.2f}")
+
+# Example: Analyze a social media post
+social_media_post = "Had fun onthe beach with friends #friendsforever #Sunshine #SummerVibes 🌞"
+analyze_social_media_post(social_media_post)
+--------------------------------------------------------------------------------------------------------------
